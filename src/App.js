@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import './index.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PaddleCheckout from './PaddleCheckout';
+import DirectCheckout from './DirectCheckout';
+import PaymentStatus from './PaymentStatus';
+import TransactionCheckout from './TransactionCheckout';
+// import PlanList from './PlanList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <div className="App">
+    //   {/* <PlanList onSelect={plan => console.log('Selected Plan:', plan)} /> */}
+    //   <PaddleCheckout />
+    // </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<PaddleCheckout />} />
+        <Route path="/pay-link/:priceId" element={<DirectCheckout />} />
+        <Route path="/pay" element={<TransactionCheckout />} />
+        <Route path="/billing" element={<PaymentStatus />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
